@@ -5,26 +5,33 @@ import (
 	"fmt"
 )
 
+func switchResult(result int) {
+	switch result {
+	case 0:
+		fmt.Println("Результат маленький или ноль")
+
+	case 1, 2, 3, 4, 5, 6, 7, 8, 9:
+		fmt.Println("Результат средний")
+	default:
+		fmt.Println("Результат большой")
+	}
+}
+
 func divide(a, b int) (int, error) {
 	var err error
 	var result int
 	if b == 0 {
 		err = errors.New("b==0\nна ноль делить нельзя")
+	} else if a < 0 && b < 0 {
+		result = a / b
+		switchResult(result)
 	} else if a < 0 || b < 0 {
 		err = errors.New("одно из чисел меньше нуля")
 
 	} else {
 		result = a / b
+		switchResult(result)
 
-		switch result {
-		case 0:
-			fmt.Println("Результат маленький или ноль")
-
-		case 1, 2, 3, 4, 5, 6, 7, 8, 9:
-			fmt.Println("Результат средний")
-		default:
-			fmt.Println("Результат большой")
-		}
 	}
 	return result, err
 }
