@@ -45,7 +45,7 @@ func main() {
 			continue
 		}
 		if userInput == "start" {
-			fmt.Println("Введите два числа")
+			fmt.Println("Введите два числа через пробел")
 			var (
 				number1 int
 				number2 int
